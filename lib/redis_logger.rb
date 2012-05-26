@@ -16,14 +16,14 @@ require 'redis'
 #
 class RedisLogger
 
-  def self.redis=(server)
-    host, port, db = server.split(':')
+  def self.redis= server
+    host, port, db = server
     @redis = Redis.new(:host => host, :port => port, :thread_safe => true, :db => db)
   end
 
   def self.redis
     return @redis if @redis
-    self.redis = 'localhost:6379'
+    self.redis = ["localhost", "6379"]
     self.redis
   end
 
